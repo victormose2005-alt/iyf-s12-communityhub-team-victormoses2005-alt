@@ -1,0 +1,38 @@
+
+# CommunityHub - Team Contributions
+
+## Project Overview
+CommunityHub is a platform where users can share posts, ideas, knowledge and experiences.
+
+## Team Members and Responsibilities
+
+### Team Leader / Member 1: Posts Section
+Victor Moses
+
+Responsibilities:
+- Create PostList.jsx.
+- Create PostCard.jsx.
+- Display posts using React components.
+- Use props to pass post information.
+- Manage and display posts using useState.
+
+### Member 2: Layout
+
+
+Responsibilities:
+- Create Header.jsx.
+- Create Sidebar.jsx.
+- Create Footer.jsx.
+- Ensure the layout components work together.
+
+### Member 3: Post Creation
+ # Atem Kuir
+
+Responsibilities:
+- Create CreatePost.jsx.
+- Build the post creation form.
+- Use useState to manage form inputs.
+- Allow new posts to be added to the displayed list.
+
+## Collaboration
+Each member is responsible for their assigned components. Contributions are submitted through individual Git branches and Pull Requests, reviewed, and integrated into the main project.
