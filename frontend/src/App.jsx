@@ -1,12 +1,4 @@
-import { useState } from "react";
 
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import CreatePost from "./components/CreatePost";
-import PostList from "./components/PostList";
-import Footer from "./components/Footer";
-
-import "./App.css";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -31,22 +23,3 @@ function App() {
   }
 
   return (
-    <>
-      <Header />
-
-      <div className="app-layout">
-        <Sidebar />
-
-        <main>
-          <CreatePost onAddPost={handleAddPost} />
-
-          <PostList posts={posts} />
-        </main>
-      </div>
-
-      <Footer />
-    </>
-  );
-}
-
-export default App;
