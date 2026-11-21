@@ -1,46 +1,25 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Layout from "./components/Layout";
-import PostList from "./components/PostList";
-import CreatePost from "./components/CreatePost";
-import Footer from "./components/Footer";
-
-import "./App.css";
-
-function Placeholder({ title }) {
-  return <h2>{title} page coming soon.</h2>;
-}
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      author: "Victor",
+      title: "Welcome to ThinkSpace",
+      content: "A place to share knowledge, ideas and experiences.",
+      category: "Community",
+    },
+    {
+      id: 2,
+      author: "Alex",
+      title: "Learning React",
+      content: "Components and props make applications easier to organise.",
+      category: "Technology",
+    },
+  ]);
+
+  function handleAddPost(newPost) {
+    setPosts((previousPosts) => [newPost, ...previousPosts]);
+  }
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<PostList />} />
-
-          <Route path="posts" element={<PostList />} />
-
-          <Route path="create" element={<CreatePost />} />
-
-          <Route path="about" element={<Placeholder title="About" />} />
-
-          <Route path="*" element={<Placeholder title="Page not found" />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
-<Route path="create" element={<Placeholder title="Create Post" />} />
-
-
-
-After
-Actual component
-
-<Route path="create" element={<CreatePost />} />
-
-
-And add:
-import CreatePost from "./components/CreatePost";
