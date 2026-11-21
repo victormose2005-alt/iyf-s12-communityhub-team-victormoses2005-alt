@@ -1,13 +1,20 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import CreatePost from "./components/CreatePost";
+import Layout from "./components/Layout/Layout";
 import PostList from "./components/PostList";
-import Footer from "./components/Footer";
+import CreatePost from "./components/CreatePost";
 
 import "./App.css";
+
+function Placeholder({ title }) {
+  return (
+    <section>
+      <h1>{title}</h1>
+      <p>Coming soon.</p>
+    </section>
+  );
+}
 
 function App() {
   const [posts, setPosts] = useState([
@@ -32,20 +39,36 @@ function App() {
   }
 
   return (
-    <>
-      <Header />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={<PostList posts={posts} />}
+          />
 
-      <div className="app-layout">
-        <Sidebar />
+          <Route
+            path="posts"
+            element={<PostList posts={posts} />}
+          />
 
-        <main>
-          <CreatePost onAddPost={handleAddPost} />
-          <PostList posts={posts} />
-        </main>
-      </div>
+          <Route
+            path="create"
+            element={<CreatePost onAddPost={handleAddPost} />}
+          />
 
-      <Footer />
-    </>
+          <Route
+            path="about"
+            element={<Placeholder title="About" />}
+          />
+
+          <Route
+            path="*"
+            element={<Placeholder title="Page not found" />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
