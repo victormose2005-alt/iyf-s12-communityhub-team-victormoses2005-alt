@@ -1,34 +1,29 @@
-# iyf-s12-communityhub-team-victormoses2005-alt
-IYF Season 12 Week 8 React CommunityHub
-# CommunityHub
+# CommunityHub - IYF S12 Week 09
 
-## About
-CommunityHub is a community platform we're building as part of IYF Weekend Academy Season 12, Week 8.
+Team project: Posts, PostDetail, Create Post, Hooks + Performance.
 
-The project is   building a simple, interactive platform where users can share posts and interact with one another.
+**Live Demo:** [Paste your Vercel / Netlify link here]
+**Repo:** iyf-s12-communityhub-team-victormose2005-alt
 
-## What We're Learning
-- Building reusable React components.
-- Passing data using props.
-- Managing state with useState.
-- Handling user interactions and events.
-- Working together using Git and GitHub.
+## Team
 
-## Technologies
-- React
-- JavaScript
-- HTML
-- CSS
-- Vite
+| Member | Role | GitHub |
+| --- | --- | --- |
+| Member 1 - Victor | Posts List + Cleanup | victormose2005-alt |
+| Member 2 - Toch Omot | Hooks, PostDetail, About | tochomot385-hash |
+| Member 3 - Atem | CreatePost | Unityatem |
 
-## Features
-- Display community posts.
-- Create new posts.
-- Organise content into reusable components.
-- Interactive user interface.
+## What We Built - Week 09
 
-## Contributors
-Built collaboratively by our three-member subgroup as part of IYF Weekend Academy Season 12.
+- PostList - List with loading + error states
+- PostDetail (/posts/:id) - Member 2
+- About (/about) - Member 2
+- Create Post (/create) - Member 3 Atem
+- Hooks: useFetch.js, useLocalStorage.js - Member 2
+- No blank screen - Loading spinner + error message
 
-## Getting Started
-Setup and installation instructions will be added as the project develops.
+## How To Run
+
+```bash
+npm install
+npm run dev
