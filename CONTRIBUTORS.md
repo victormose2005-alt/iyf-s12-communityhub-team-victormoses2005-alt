@@ -22,7 +22,3 @@ Team project: Posts, PostDetail, Create Post, Hooks + Performance.
 - No blank screen - Loading spinner + error message
 
 ## How To Run
-
-```bash
-npm install
-npm run dev
