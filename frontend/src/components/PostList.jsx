@@ -1,63 +1,47 @@
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import PostCard from "./PostCard";
 
-function PostList() {
-  const [posts, setPosts] = useState([]);
+function PostList({ posts: localPosts = [] }) {
+  const [apiPosts, setApiPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    async function fetchPosts() {
       try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch posts.");
-        }
-
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        if (!response.ok) throw new Error("Failed to fetch posts");
         const data = await response.json();
-
-        const formattedPosts = data.slice(0, 10).map((post) => ({
-          id: post.id,
-          author: `User ${post.userId}`,
+        const formatted = data.slice(0, 20).map((post) => ({
+          id: `api-${post.id}`,
           title: post.title,
+          author: `User ${post.userId}`,
           content: post.body,
           category: "Community",
         }));
-
-        setPosts(formattedPosts);
+        setApiPosts(formatted);
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
-    };
-
+    }
     fetchPosts();
   }, []);
 
-  if (loading) {
-    return <p>Loading community discussions...</p>;
-  }
+  if (loading) return <p>Loading community discussions...</p>;
+  if (error) return <p>{error}</p>;
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+  // Show YOUR posts first (from localStorage), then API posts
+  const allPosts = [...localPosts, ...apiPosts];
 
   return (
     <section className="post-list">
-      <h1>Community Discussions</h1>
-
-      {posts.length === 0 ? (
-        <p>No discussions available.</p>
-      ) : (
-        posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))
-      )}
+      <h2>Community Discussions</h2>
+      {allPosts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
     </section>
   );
 }
