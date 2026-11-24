@@ -1,5 +1,5 @@
 const express = require("express");
-const postRoutes = require("./routes/posts");
+const postRoutes = require("./routes/postRoutes");
 const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 
