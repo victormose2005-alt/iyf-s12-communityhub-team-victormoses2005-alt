@@ -1,21 +1,14 @@
-// Validates title, content, and author for a post
-
 const validatePost = (req, res, next) => {
-  const { title, content, author } = req.body || {};
-
-  if (!title || typeof title !== 'string' || title.trim() === '') {
-    return res.status(400).json({ error: 'Title is required' });
+  const { title, content, author } = req.body;
+  if (!title || !content || !author) {
+    return res.status(400).json({ error: "Title, content, and author are required" });
   }
-
-  if (!content || typeof content !== 'string' || content.trim() === '') {
-    return res.status(400).json({ error: 'Content is required' });
+  if (typeof title !== "string" || typeof content !== "string" || typeof author !== "string") {
+    return res.status(400).json({ error: "Title, content, and author must be strings" });
   }
-
-  if (!author || typeof author !== 'string' || author.trim() === '') {
-    return res.status(400).json({ error: 'Author is required' });
+  if (title.trim().length === 0 || content.trim().length === 0 || author.trim().length === 0) {
+    return res.status(400).json({ error: "Fields cannot be empty" });
   }
-
   next();
 };
-
-export default validatePost;
+module.exports = { validatePost };
