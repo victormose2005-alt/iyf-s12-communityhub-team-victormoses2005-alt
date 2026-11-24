@@ -1,5 +1,5 @@
 const express = require("express");
-const postRoutes = require("./routes/postRoutes");
+const routes = require("./routes");
 
 const app = express();
 app.use(express.json());
@@ -8,6 +8,6 @@ app.get("/", (req, res) => {
   res.json({ message: "CommunityHub API is running" });
 });
 
-app.use("/api/posts", postRoutes);
+app.use("/api", routes);
 
 module.exports = app;
