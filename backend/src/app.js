@@ -1,13 +1,13 @@
 const express = require("express");
-const routes = require("./routes");
+
 
 const app = express();
 app.use(express.json());
+app.use(logger);
 
 app.get("/", (req, res) => {
-  res.json({ message: "CommunityHub API is running" });
+  res.json({ message: "CommunityHub API" });
 });
 
 app.use("/api", routes);
 
-module.exports = app;
